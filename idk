@@ -712,7 +712,7 @@ function KarraHub:Init()
 end
 
 -- Create sliders function
-function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, maxValue, defaultValue, callback)
+function KarraHub:CreateSlider(sliderText, minValue, maxValue, defaultValue, callback)
     local Slider = Instance.new("Frame")
     local SliderLabel = Instance.new("TextLabel")
     local SliderBackground = Instance.new("Frame")
