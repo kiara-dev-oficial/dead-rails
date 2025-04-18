@@ -270,7 +270,7 @@ function KarraHub:CreateSection(sectionName)
     
     SectionContainer.Name = "Section_" .. sectionName
     SectionContainer.Size = UDim2.new(0, 147, 1, 0)
-    SectionContainer.BackgroundColor3 = Color3.fromRGB(117, 117, 228) --25, 25, 30
+    SectionContainer.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
     SectionContainer.BorderSizePixel = 0
     SectionContainer.Parent = Containers
     
@@ -280,8 +280,8 @@ function KarraHub:CreateSection(sectionName)
     
     local SectionGradient = Instance.new("UIGradient")
     SectionGradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 27, 35)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(23, 23, 30))
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(179, 209, 108)), --33, 35, 27
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(179, 209, 108))
     })
     SectionGradient.Rotation = 90
     SectionGradient.Parent = SectionContainer
