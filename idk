@@ -65,7 +65,7 @@ LoadingLogo.Position = UDim2.new(0, 0, 0, 20)
 LoadingLogo.BackgroundTransparency = 1
 LoadingLogo.Font = Enum.Font.GothamBold
 LoadingLogo.Text = "KARRA HUB"
-LoadingLogo.TextColor3 = Color3.fromRGB(148, 85, 255) -- Purple color for title
+LoadingLogo.TextColor3 = Color3.fromRGB(148, 85, 255)
 LoadingLogo.TextSize = 26
 LoadingLogo.Parent = LoadingFrame
 
@@ -98,7 +98,7 @@ LoadingBarCorner.Parent = LoadingBar
 
 LoadingBarFill.Name = "LoadingBarFill"
 LoadingBarFill.Size = UDim2.new(0, 0, 1, 0)
-LoadingBarFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255) -- Purple color matching title
+LoadingBarFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255)
 LoadingBarFill.BorderSizePixel = 0
 LoadingBarFill.Parent = LoadingBar
 
@@ -170,7 +170,7 @@ Title.Size = UDim2.new(1, -30, 1, 0)
 Title.BackgroundTransparency = 1
 Title.Font = Enum.Font.GothamBold
 Title.Text = "  KARRA HUB"
-Title.TextColor3 = Color3.fromRGB(148, 85, 255) -- Purple color for title
+Title.TextColor3 = Color3.fromRGB(148, 85, 255)
 Title.TextSize = 16
 Title.TextXAlignment = Enum.TextXAlignment.Left
 Title.Parent = TitleBar
@@ -200,7 +200,7 @@ Containers.Parent = MainFrame
 UIListLayout.Parent = Containers
 UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0, 1) -- Reduced padding between sections to make them appear joined
+UIListLayout.Padding = UDim.new(0, 1)
 
 local function MakeDraggable(frame)
     local dragToggle, dragInput, dragStart, startPos
@@ -269,13 +269,13 @@ function KarraHub:CreateSection(sectionName)
     local UIPadding = Instance.new("UIPadding")
     
     SectionContainer.Name = "Section_" .. sectionName
-    SectionContainer.Size = UDim2.new(0, 147, 1, 0) -- Adjusted width for better fit
-    SectionContainer.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+    SectionContainer.Size = UDim2.new(0, 147, 1, 0)
+    SectionContainer.BackgroundColor3 = Color3.fromRGB(148, 85, 255)
     SectionContainer.BorderSizePixel = 0
     SectionContainer.Parent = Containers
     
     local SectionCorner = Instance.new("UICorner")
-    SectionCorner.CornerRadius = UDim.new(0, 0) -- No corners by default
+    SectionCorner.CornerRadius = UDim.new(0, 0)
     SectionCorner.Parent = SectionContainer
     
     local SectionGradient = Instance.new("UIGradient")
@@ -305,7 +305,7 @@ function KarraHub:CreateSection(sectionName)
     TitleGradient.Parent = SectionTitle
     
     local TitleCorner = Instance.new("UICorner")
-    TitleCorner.CornerRadius = UDim.new(0, 0) -- No corners
+    TitleCorner.CornerRadius = UDim.new(0, 0)  
     TitleCorner.Parent = SectionTitle
     
     SectionContent.Name = "Content"
@@ -316,7 +316,7 @@ function KarraHub:CreateSection(sectionName)
     
     UIListLayout.Parent = SectionContent
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-    UIListLayout.Padding = UDim.new(0, 2) -- Reduced padding between buttons
+    UIListLayout.Padding = UDim.new(0, 2) 
     
     UIPadding.Parent = SectionContent
     UIPadding.PaddingLeft = UDim.new(0, 5)
@@ -331,7 +331,7 @@ function KarraHub:CreateSection(sectionName)
         local ButtonLabel = Instance.new("TextLabel")
         
         Button.Name = "Button_" .. buttonText
-        Button.Size = UDim2.new(1, 0, 0, 32) -- Slightly taller buttons
+        Button.Size = UDim2.new(1, 0, 0, 32) 
         Button.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
         Button.BorderSizePixel = 0
         Button.Text = ""
@@ -396,7 +396,7 @@ function KarraHub:CreateSection(sectionName)
         local toggled = false
         
         Toggle.Name = "Toggle_" .. toggleText
-        Toggle.Size = UDim2.new(1, 0, 0, 32) -- Slightly taller toggles
+        Toggle.Size = UDim2.new(1, 0, 0, 32) 
         Toggle.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
         Toggle.BorderSizePixel = 0
         Toggle.Text = ""
@@ -689,7 +689,7 @@ function KarraHub:CreateSlider(sliderText, minValue, maxValue, defaultValue, cal
     
     SliderFill.Name = "Fill"
     SliderFill.Size = UDim2.new((value - minValue) / (maxValue - minValue), 0, 1, 0)
-    SliderFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255) -- Purple color matching theme
+    SliderFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255) 
     SliderFill.BorderSizePixel = 0
     SliderFill.Parent = SliderBackground
     
