@@ -273,6 +273,7 @@ function KarraHub:CreateSection(sectionName)
     SectionContainer.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
     SectionContainer.BorderSizePixel = 0
     SectionContainer.Parent = Containers
+    SectionContainer.TextColor3 = Color3.fromRGB(235, 235, 238)
     
     local SectionCorner = Instance.new("UICorner")
     SectionCorner.CornerRadius = UDim.new(0, 0)
