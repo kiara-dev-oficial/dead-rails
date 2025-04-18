@@ -1,4 +1,3 @@
-print("asdv1")
 -- Karra Hub UI Library
 local KarraHub = {}
 
@@ -89,17 +88,17 @@ LoadingBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 LoadingBar.BorderSizePixel = 0
 LoadingBar.Parent = LoadingFrame
 
+-- Add Corner to LoadingBar
+local LoadingBarCorner = Instance.new("UICorner")
+LoadingBarCorner.CornerRadius = UDim.new(1, 0)
+LoadingBarCorner.Parent = LoadingBar
+
 -- Loading Bar Fill
 LoadingBarFill.Name = "LoadingBarFill"
 LoadingBarFill.Size = UDim2.new(0, 0, 1, 0)
 LoadingBarFill.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 LoadingBarFill.BorderSizePixel = 0
 LoadingBarFill.Parent = LoadingBar
-
--- Add Corner to LoadingBar
-local LoadingBarCorner = Instance.new("UICorner")
-LoadingBarCorner.CornerRadius = UDim.new(1, 0)
-LoadingBarCorner.Parent = LoadingBar
 
 -- Add Corner to LoadingBarFill
 local LoadingBarFillCorner = Instance.new("UICorner")
@@ -141,6 +140,11 @@ TitleBar.Size = UDim2.new(1, 0, 0, 30)
 TitleBar.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
 TitleBar.BorderSizePixel = 0
 TitleBar.Parent = MainFrame
+
+-- Add Corner to TitleBar (Added!)
+local TitleBarCorner = Instance.new("UICorner")
+TitleBarCorner.CornerRadius = UDim.new(0, 6)
+TitleBarCorner.Parent = TitleBar
 
 -- Title
 Title.Name = "Title"
@@ -259,6 +263,11 @@ function KarraHub:CreateSection(sectionName)
     SectionContent.BackgroundTransparency = 1
     SectionContent.Parent = SectionContainer
     
+    -- Add Corner to SectionContent (Added!)
+    local ContentCorner = Instance.new("UICorner")
+    ContentCorner.CornerRadius = UDim.new(0, 4)
+    ContentCorner.Parent = SectionContent
+    
     UIListLayout.Parent = SectionContent
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
     UIListLayout.Padding = UDim.new(0, 5)
@@ -267,6 +276,7 @@ function KarraHub:CreateSection(sectionName)
     UIPadding.PaddingLeft = UDim.new(0, 5)
     UIPadding.PaddingRight = UDim.new(0, 5)
     UIPadding.PaddingTop = UDim.new(0, 5)
+    UIPadding.PaddingBottom = UDim.new(0, 5)  -- Added padding at bottom
     
     local SectionFunctions = {}
     
@@ -455,3 +465,4 @@ end
 local Library = KarraHub
 
 return Library
+print("asdsadas123")
