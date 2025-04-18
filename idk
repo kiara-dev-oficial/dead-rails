@@ -1,7 +1,5 @@
--- Karra Hub UI Library - Improved Version
 local KarraHub = {}
 
--- Main UI Elements
 local ScreenGui = Instance.new("ScreenGui")
 local LoadingFrame = Instance.new("Frame")
 local MainFrame = Instance.new("Frame")
@@ -15,12 +13,10 @@ local LoadingBar = Instance.new("Frame")
 local LoadingBarFill = Instance.new("Frame")
 local LoadingLogo = Instance.new("TextLabel")
 
--- Properties
 ScreenGui.Name = "KarraHub"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 
--- Try to parent to CoreGui (will fall back to PlayerGui if exploit doesn't have CoreGui access)
 local success, result = pcall(function()
     ScreenGui.Parent = game:GetService("CoreGui")
     return true
@@ -30,7 +26,6 @@ if not success then
     ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 end
 
--- Loading Frame
 LoadingFrame.Name = "LoadingFrame"
 LoadingFrame.Size = UDim2.new(0, 300, 0, 150)
 LoadingFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
@@ -39,7 +34,6 @@ LoadingFrame.BorderSizePixel = 0
 LoadingFrame.ClipsDescendants = true
 LoadingFrame.Parent = ScreenGui
 
--- Create gradient for LoadingFrame
 local LoadingGradient = Instance.new("UIGradient")
 LoadingGradient.Color = ColorSequence.new({
     ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 30)),
@@ -48,7 +42,6 @@ LoadingGradient.Color = ColorSequence.new({
 LoadingGradient.Rotation = 45
 LoadingGradient.Parent = LoadingFrame
 
--- Add Shadow to LoadingFrame
 local LoadingShadow = Instance.new("ImageLabel")
 LoadingShadow.Name = "Shadow"
 LoadingShadow.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -62,30 +55,26 @@ LoadingShadow.ScaleType = Enum.ScaleType.Slice
 LoadingShadow.SliceCenter = Rect.new(23, 23, 277, 277)
 LoadingShadow.Parent = LoadingFrame
 
--- Add Corner to LoadingFrame
 local LoadingCorner = Instance.new("UICorner")
 LoadingCorner.CornerRadius = UDim.new(0, 8)
 LoadingCorner.Parent = LoadingFrame
 
--- Loading Logo
 LoadingLogo.Name = "LoadingLogo"
 LoadingLogo.Size = UDim2.new(1, 0, 0, 60)
 LoadingLogo.Position = UDim2.new(0, 0, 0, 20)
 LoadingLogo.BackgroundTransparency = 1
 LoadingLogo.Font = Enum.Font.GothamBold
 LoadingLogo.Text = "KARRA HUB"
-LoadingLogo.TextColor3 = Color3.fromRGB(148, 85, 255) -- Purple color for title
+LoadingLogo.TextColor3 = Color3.fromRGB(148, 85, 255)
 LoadingLogo.TextSize = 26
 LoadingLogo.Parent = LoadingFrame
 
--- Add text stroke to logo for better visibility
 local LogoStroke = Instance.new("UIStroke")
 LogoStroke.Color = Color3.fromRGB(100, 50, 200)
 LogoStroke.Thickness = 1
 LogoStroke.Transparency = 0.7
 LogoStroke.Parent = LoadingLogo
 
--- Loading Text
 LoadingText.Name = "LoadingText"
 LoadingText.Size = UDim2.new(1, 0, 0, 20)
 LoadingText.Position = UDim2.new(0, 0, 0, 80)
@@ -96,7 +85,6 @@ LoadingText.TextColor3 = Color3.fromRGB(220, 220, 220)
 LoadingText.TextSize = 14
 LoadingText.Parent = LoadingFrame
 
--- Loading Bar Background
 LoadingBar.Name = "LoadingBar"
 LoadingBar.Size = UDim2.new(0.8, 0, 0, 6)
 LoadingBar.Position = UDim2.new(0.1, 0, 0, 110)
@@ -104,19 +92,16 @@ LoadingBar.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
 LoadingBar.BorderSizePixel = 0
 LoadingBar.Parent = LoadingFrame
 
--- Add Corner to LoadingBar
 local LoadingBarCorner = Instance.new("UICorner")
 LoadingBarCorner.CornerRadius = UDim.new(1, 0)
 LoadingBarCorner.Parent = LoadingBar
 
--- Loading Bar Fill
 LoadingBarFill.Name = "LoadingBarFill"
 LoadingBarFill.Size = UDim2.new(0, 0, 1, 0)
-LoadingBarFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255) -- Purple color matching title
+LoadingBarFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255)
 LoadingBarFill.BorderSizePixel = 0
 LoadingBarFill.Parent = LoadingBar
 
--- Add gradient to LoadingBarFill
 local FillGradient = Instance.new("UIGradient")
 FillGradient.Color = ColorSequence.new({
     ColorSequenceKeypoint.new(0, Color3.fromRGB(148, 85, 255)),
@@ -124,12 +109,10 @@ FillGradient.Color = ColorSequence.new({
 })
 FillGradient.Parent = LoadingBarFill
 
--- Add Corner to LoadingBarFill
 local LoadingBarFillCorner = Instance.new("UICorner")
 LoadingBarFillCorner.CornerRadius = UDim.new(1, 0)
 LoadingBarFillCorner.Parent = LoadingBarFill
 
--- Main Frame
 MainFrame.Name = "MainFrame"
 MainFrame.Size = UDim2.new(0, 450, 0, 300)
 MainFrame.Position = UDim2.new(0.5, -225, 0.5, -150)
@@ -139,7 +122,6 @@ MainFrame.ClipsDescendants = true
 MainFrame.Visible = false
 MainFrame.Parent = ScreenGui
 
--- Create gradient for MainFrame
 local MainGradient = Instance.new("UIGradient")
 MainGradient.Color = ColorSequence.new({
     ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 30)),
@@ -148,7 +130,6 @@ MainGradient.Color = ColorSequence.new({
 MainGradient.Rotation = 45
 MainGradient.Parent = MainFrame
 
--- Add Shadow to MainFrame
 local MainShadow = Instance.new("ImageLabel")
 MainShadow.Name = "Shadow"
 MainShadow.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -162,19 +143,16 @@ MainShadow.ScaleType = Enum.ScaleType.Slice
 MainShadow.SliceCenter = Rect.new(23, 23, 277, 277)
 MainShadow.Parent = MainFrame
 
--- Add Corner to MainFrame
 local MainCorner = Instance.new("UICorner")
 MainCorner.CornerRadius = UDim.new(0, 8)
 MainCorner.Parent = MainFrame
 
--- Title Bar
 TitleBar.Name = "TitleBar"
 TitleBar.Size = UDim2.new(1, 0, 0, 35)
 TitleBar.BackgroundColor3 = Color3.fromRGB(15, 15, 22)
 TitleBar.BorderSizePixel = 0
 TitleBar.Parent = MainFrame
 
--- Add gradient to TitleBar
 local TitleGradient = Instance.new("UIGradient")
 TitleGradient.Color = ColorSequence.new({
     ColorSequenceKeypoint.new(0, Color3.fromRGB(15, 15, 22)),
@@ -183,30 +161,26 @@ TitleGradient.Color = ColorSequence.new({
 TitleGradient.Rotation = 90
 TitleGradient.Parent = TitleBar
 
--- Add Corner to TitleBar with only top corners rounded
 local TitleBarCorner = Instance.new("UICorner")
 TitleBarCorner.CornerRadius = UDim.new(0, 8)
 TitleBarCorner.Parent = TitleBar
 
--- Title
 Title.Name = "Title"
 Title.Size = UDim2.new(1, -30, 1, 0)
 Title.BackgroundTransparency = 1
 Title.Font = Enum.Font.GothamBold
 Title.Text = "  KARRA HUB"
-Title.TextColor3 = Color3.fromRGB(148, 85, 255) -- Purple color for title
+Title.TextColor3 = Color3.fromRGB(148, 85, 255)
 Title.TextSize = 16
 Title.TextXAlignment = Enum.TextXAlignment.Left
 Title.Parent = TitleBar
 
--- Add glow to title text
 local TitleStroke = Instance.new("UIStroke")
 TitleStroke.Color = Color3.fromRGB(100, 50, 200)
 TitleStroke.Thickness = 1
 TitleStroke.Transparency = 0.7
 TitleStroke.Parent = Title
 
--- Close Button
 CloseButton.Name = "CloseButton"
 CloseButton.Size = UDim2.new(0, 35, 0, 35)
 CloseButton.Position = UDim2.new(1, -35, 0, 0)
@@ -217,20 +191,17 @@ CloseButton.TextColor3 = Color3.fromRGB(200, 200, 200)
 CloseButton.TextSize = 22
 CloseButton.Parent = TitleBar
 
--- Containers
 Containers.Name = "Containers"
 Containers.Size = UDim2.new(1, 0, 1, -35)
 Containers.Position = UDim2.new(0, 0, 0, 35)
 Containers.BackgroundTransparency = 1
 Containers.Parent = MainFrame
 
--- UIListLayout for Containers
 UIListLayout.Parent = Containers
 UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0, 1) -- Reduced padding between sections to make them appear joined
+UIListLayout.Padding = UDim.new(0, 1)
 
--- Make UI draggable
 local function MakeDraggable(frame)
     local dragToggle, dragInput, dragStart, startPos
     
@@ -267,7 +238,6 @@ end
 
 MakeDraggable(MainFrame)
 
--- Close button functionality with fade out effect
 CloseButton.MouseButton1Click:Connect(function()
     local tweenService = game:GetService("TweenService")
     local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
@@ -277,14 +247,12 @@ CloseButton.MouseButton1Click:Connect(function()
     tweenService:Create(Title, tweenInfo, {TextTransparency = 1}):Play()
     tweenService:Create(CloseButton, tweenInfo, {TextTransparency = 1}):Play()
     
-    -- Also fade out the shadow
     tweenService:Create(MainShadow, tweenInfo, {ImageTransparency = 1}):Play()
     
     wait(0.3)
     ScreenGui:Destroy()
 end)
 
--- Hover effects for close button
 CloseButton.MouseEnter:Connect(function()
     game:GetService("TweenService"):Create(CloseButton, TweenInfo.new(0.2), {TextColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 end)
@@ -293,7 +261,6 @@ CloseButton.MouseLeave:Connect(function()
     game:GetService("TweenService"):Create(CloseButton, TweenInfo.new(0.2), {TextColor3 = Color3.fromRGB(200, 200, 200)}):Play()
 end)
 
--- Library functions
 function KarraHub:CreateSection(sectionName)
     local SectionContainer = Instance.new("Frame")
     local SectionTitle = Instance.new("TextLabel")
@@ -302,18 +269,15 @@ function KarraHub:CreateSection(sectionName)
     local UIPadding = Instance.new("UIPadding")
     
     SectionContainer.Name = "Section_" .. sectionName
-    SectionContainer.Size = UDim2.new(0, 147, 1, 0) -- Adjusted width for better fit
-    SectionContainer.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+    SectionContainer.Size = UDim2.new(0, 147, 1, 0)
+    SectionContainer.BackgroundColor3 = Color3.fromRGB(148, 85, 255)
     SectionContainer.BorderSizePixel = 0
     SectionContainer.Parent = Containers
     
-    -- Remove corner radius from sections to join them
-    -- Only apply corners to the first and last section (this will be handled dynamically)
     local SectionCorner = Instance.new("UICorner")
-    SectionCorner.CornerRadius = UDim.new(0, 0) -- No corners by default
+    SectionCorner.CornerRadius = UDim.new(0, 0)
     SectionCorner.Parent = SectionContainer
     
-    -- Apply gradient to sections
     local SectionGradient = Instance.new("UIGradient")
     SectionGradient.Color = ColorSequence.new({
         ColorSequenceKeypoint.new(0, Color3.fromRGB(27, 27, 35)),
@@ -332,7 +296,6 @@ function KarraHub:CreateSection(sectionName)
     SectionTitle.TextSize = 14
     SectionTitle.Parent = SectionContainer
     
-    -- Add gradient to section title
     local TitleGradient = Instance.new("UIGradient")
     TitleGradient.Color = ColorSequence.new({
         ColorSequenceKeypoint.new(0, Color3.fromRGB(17, 17, 27)),
@@ -341,9 +304,8 @@ function KarraHub:CreateSection(sectionName)
     TitleGradient.Rotation = 90
     TitleGradient.Parent = SectionTitle
     
-    -- Remove corners from section title
     local TitleCorner = Instance.new("UICorner")
-    TitleCorner.CornerRadius = UDim.new(0, 0) -- No corners
+    TitleCorner.CornerRadius = UDim.new(0, 0)  
     TitleCorner.Parent = SectionTitle
     
     SectionContent.Name = "Content"
@@ -354,7 +316,7 @@ function KarraHub:CreateSection(sectionName)
     
     UIListLayout.Parent = SectionContent
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-    UIListLayout.Padding = UDim.new(0, 2) -- Reduced padding between buttons
+    UIListLayout.Padding = UDim.new(0, 2) 
     
     UIPadding.Parent = SectionContent
     UIPadding.PaddingLeft = UDim.new(0, 5)
@@ -369,14 +331,13 @@ function KarraHub:CreateSection(sectionName)
         local ButtonLabel = Instance.new("TextLabel")
         
         Button.Name = "Button_" .. buttonText
-        Button.Size = UDim2.new(1, 0, 0, 32) -- Slightly taller buttons
+        Button.Size = UDim2.new(1, 0, 0, 32) 
         Button.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
         Button.BorderSizePixel = 0
         Button.Text = ""
         Button.AutoButtonColor = false
         Button.Parent = SectionContent
         
-        -- Add gradient to button
         local ButtonGradient = Instance.new("UIGradient")
         ButtonGradient.Color = ColorSequence.new({
             ColorSequenceKeypoint.new(0, Color3.fromRGB(35, 35, 45)),
@@ -385,12 +346,10 @@ function KarraHub:CreateSection(sectionName)
         ButtonGradient.Rotation = 90
         ButtonGradient.Parent = Button
         
-        -- Add Corner to Button
         local ButtonCorner = Instance.new("UICorner")
         ButtonCorner.CornerRadius = UDim.new(0, 4)
         ButtonCorner.Parent = Button
         
-        -- Add subtle outline to button
         local ButtonStroke = Instance.new("UIStroke")
         ButtonStroke.Color = Color3.fromRGB(50, 50, 65)
         ButtonStroke.Thickness = 1
@@ -405,11 +364,10 @@ function KarraHub:CreateSection(sectionName)
         ButtonLabel.TextSize = 12
         ButtonLabel.Parent = Button
         
-        -- Button effects
         Button.MouseEnter:Connect(function()
             game:GetService("TweenService"):Create(Button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(45, 45, 60)}):Play()
             game:GetService("TweenService"):Create(ButtonStroke, TweenInfo.new(0.2), {Color = Color3.fromRGB(90, 70, 175)}):Play()
-            game:GetService("TweenService"):Create(ButtonLabel, TweenInfo!.new(0.2), {TextColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+            game:GetService("TweenService"):Create(ButtonLabel, TweenInfo.new(0.2), {TextColor3 = Color3.fromRGB(255, 255, 255)}):Play()
         end)
         
         Button.MouseLeave:Connect(function()
@@ -418,15 +376,7 @@ function KarraHub:CreateSection(sectionName)
             game:GetService("TweenService"):Create(ButtonLabel, TweenInfo.new(0.2), {TextColor3 = Color3.fromRGB(230, 230, 230)}):Play()
         end)
         
-        Button.MouseButton1Down:Connect(function()
-            game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(55, 55, 70)}):Play()
-            game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {Size = UDim2.new(0.98, 0, 0.95, 0), Position = UDim2.new(0.01, 0, 0.025, 0)}):Play()
-        end)
         
-        Button.MouseButton1Up:Connect(function()
-            game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(45, 45, 60)}):Play()
-            game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0)}):Play()
-        end)
         
         Button.MouseButton1Click:Connect(function()
             if callback then
@@ -446,14 +396,13 @@ function KarraHub:CreateSection(sectionName)
         local toggled = false
         
         Toggle.Name = "Toggle_" .. toggleText
-        Toggle.Size = UDim2.new(1, 0, 0, 32) -- Slightly taller toggles
+        Toggle.Size = UDim2.new(1, 0, 0, 32) 
         Toggle.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
         Toggle.BorderSizePixel = 0
         Toggle.Text = ""
         Toggle.AutoButtonColor = false
         Toggle.Parent = SectionContent
         
-        -- Add gradient to toggle
         local ToggleGradient = Instance.new("UIGradient")
         ToggleGradient.Color = ColorSequence.new({
             ColorSequenceKeypoint.new(0, Color3.fromRGB(35, 35, 45)),
@@ -462,12 +411,10 @@ function KarraHub:CreateSection(sectionName)
         ToggleGradient.Rotation = 90
         ToggleGradient.Parent = Toggle
         
-        -- Add Corner to Toggle
         local ToggleCorner = Instance.new("UICorner")
         ToggleCorner.CornerRadius = UDim.new(0, 4)
         ToggleCorner.Parent = Toggle
         
-        -- Add subtle outline to toggle
         local ToggleStroke = Instance.new("UIStroke")
         ToggleStroke.Color = Color3.fromRGB(50, 50, 65)
         ToggleStroke.Thickness = 1
@@ -490,13 +437,11 @@ function KarraHub:CreateSection(sectionName)
         ToggleIndicator.BorderSizePixel = 0
         ToggleIndicator.Parent = Toggle
         
-        -- Add outline to toggle indicator
         local IndicatorStroke = Instance.new("UIStroke")
         IndicatorStroke.Color = Color3.fromRGB(60, 60, 75)
         IndicatorStroke.Thickness = 1
         IndicatorStroke.Parent = ToggleIndicator
         
-        -- Add Corner to ToggleIndicator
         local IndicatorCorner = Instance.new("UICorner")
         IndicatorCorner.CornerRadius = UDim.new(1, 0)
         IndicatorCorner.Parent = ToggleIndicator
@@ -508,7 +453,6 @@ function KarraHub:CreateSection(sectionName)
         ToggleInner.BorderSizePixel = 0
         ToggleInner.Parent = ToggleIndicator
         
-        -- Add shadow effect to inner toggle
         local InnerShadow = Instance.new("ImageLabel")
         InnerShadow.Name = "Shadow"
         InnerShadow.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -523,12 +467,10 @@ function KarraHub:CreateSection(sectionName)
         InnerShadow.SliceCenter = Rect.new(23, 23, 277, 277)
         InnerShadow.Parent = ToggleInner
         
-        -- Add Corner to ToggleInner
         local InnerCorner = Instance.new("UICorner")
         InnerCorner.CornerRadius = UDim.new(1, 0)
         InnerCorner.Parent = ToggleInner
         
-        -- Toggle effects
         Toggle.MouseEnter:Connect(function()
             game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(45, 45, 60)}):Play()
             game:GetService("TweenService"):Create(ToggleStroke, TweenInfo.new(0.2), {Color = Color3.fromRGB(70, 70, 90)}):Play()
@@ -567,32 +509,24 @@ game:GetService("TweenService"):Create(ToggleInner, TweenInfo.new(0.3), {Positio
     return SectionFunctions
 end
 
--- Function to update section corners for section containers
 function KarraHub:UpdateSectionCorners()
-    -- Get all section containers
     local sections = Containers:GetChildren()
     local sectionCount = 0
     
-    -- Count actual sections
     for _, section in ipairs(sections) do
         if section:IsA("Frame") and section.Name:sub(1, 8) == "Section_" then
             sectionCount = sectionCount + 1
         end
     end
     
-    -- Update corners
     for i, section in ipairs(sections) do
         if section:IsA("Frame") and section.Name:sub(1, 8) == "Section_" then
-            -- Find the section corner
             local corner = section:FindFirstChildOfClass("UICorner")
             if corner then
                 if sectionCount == 1 then
-                    -- If only one section, round all corners
                     corner.CornerRadius = UDim.new(0, 8)
                 elseif i == 1 then
-                    -- First section: round left corners only
                     corner.CornerRadius = UDim.new(0, 8)
-                    -- Add a special frame to handle the corner
                     local rightCoverFrame = Instance.new("Frame")
                     rightCoverFrame.Name = "RightCover"
                     rightCoverFrame.Size = UDim2.new(0, 8, 1, 0)
@@ -602,9 +536,7 @@ function KarraHub:UpdateSectionCorners()
                     rightCoverFrame.ZIndex = 2
                     rightCoverFrame.Parent = section
                 elseif i == sectionCount then
-                    -- Last section: round right corners only
                     corner.CornerRadius = UDim.new(0, 8)
-                    -- Add a special frame to handle the corner
                     local leftCoverFrame = Instance.new("Frame")
                     leftCoverFrame.Name = "LeftCover"
                     leftCoverFrame.Size = UDim2.new(0, 8, 1, 0)
@@ -614,7 +546,6 @@ function KarraHub:UpdateSectionCorners()
                     leftCoverFrame.ZIndex = 2
                     leftCoverFrame.Parent = section
                 else
-                    -- Middle sections: no rounded corners
                     corner.CornerRadius = UDim.new(0, 0)
                 end
             end
@@ -622,31 +553,24 @@ function KarraHub:UpdateSectionCorners()
     end
 end
 
--- Show loading animation and then the main UI
 function KarraHub:Init()
-    -- Show loading animation
     LoadingFrame.Visible = true
     
-    -- Animate loading bar
     local tweenService = game:GetService("TweenService")
     local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
     
-    -- Add initial slight bounce animation to loading logo
     local originalLogoPosition = LoadingLogo.Position
     LoadingLogo.Position = UDim2.new(0, 0, 0, 30)
     tweenService:Create(LoadingLogo, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {Position = originalLogoPosition}):Play()
     
-    -- Animate loading bar with glow effect
     local loadingTween = tweenService:Create(LoadingBarFill, tweenInfo, {Size = UDim2.new(1, 0, 1, 0)})
     loadingTween:Play()
     
     loadingTween.Completed:Connect(function()
-        -- Add subtle pulse animation to loading text
         tweenService:Create(LoadingText, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextColor3 = Color3.fromRGB(148, 85, 255)}):Play()
         
         wait(0.5)
         
-        -- Fade out loading frame
         tweenService:Create(LoadingFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
         tweenService:Create(LoadingLogo, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
         tweenService:Create(LoadingText, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
@@ -659,7 +583,6 @@ function KarraHub:Init()
         LoadingFrame.Visible = false
         MainFrame.Visible = true
         
-        -- Prepare main UI for animation
         MainFrame.BackgroundTransparency = 1
         MainShadow.ImageTransparency = 1
         TitleBar.BackgroundTransparency = 1
@@ -667,11 +590,9 @@ function KarraHub:Init()
         TitleStroke.Transparency = 1
         CloseButton.TextTransparency = 1
         
-        -- Animate main UI appearance with subtle scaling
         MainFrame.Size = UDim2.new(0, 430, 0, 280)
         MainFrame.Position = UDim2.new(0.5, -215, 0.5, -140)
         
-        -- Sequence the animations
         tweenService:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
             BackgroundTransparency = 0,
             Size = UDim2.new(0, 450, 0, 300),
@@ -704,15 +625,13 @@ function KarraHub:Init()
             TextTransparency = 0
         }):Play()
         
-        -- Update section corners for connected look
         self:UpdateSectionCorners()
     end)
     
     return self
 end
 
--- Create sliders function
-function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, maxValue, defaultValue, callback)
+function KarraHub:CreateSlider(sliderText, minValue, maxValue, defaultValue, callback)
     local Slider = Instance.new("Frame")
     local SliderLabel = Instance.new("TextLabel")
     local SliderBackground = Instance.new("Frame")
@@ -729,7 +648,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     Slider.BorderSizePixel = 0
     Slider.Parent = SectionContent
     
-    -- Add gradient to slider
     local SliderGradient = Instance.new("UIGradient")
     SliderGradient.Color = ColorSequence.new({
         ColorSequenceKeypoint.new(0, Color3.fromRGB(35, 35, 45)),
@@ -738,12 +656,10 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     SliderGradient.Rotation = 90
     SliderGradient.Parent = Slider
     
-    -- Add Corner to Slider
     local SliderCorner = Instance.new("UICorner")
     SliderCorner.CornerRadius = UDim.new(0, 4)
     SliderCorner.Parent = Slider
     
-    -- Add subtle outline to slider
     local SliderStroke = Instance.new("UIStroke")
     SliderStroke.Color = Color3.fromRGB(50, 50, 65)
     SliderStroke.Thickness = 1
@@ -767,18 +683,16 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     SliderBackground.BorderSizePixel = 0
     SliderBackground.Parent = Slider
     
-    -- Add Corner to SliderBackground
     local BackgroundCorner = Instance.new("UICorner")
     BackgroundCorner.CornerRadius = UDim.new(1, 0)
     BackgroundCorner.Parent = SliderBackground
     
     SliderFill.Name = "Fill"
     SliderFill.Size = UDim2.new((value - minValue) / (maxValue - minValue), 0, 1, 0)
-    SliderFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255) -- Purple color matching theme
+    SliderFill.BackgroundColor3 = Color3.fromRGB(148, 85, 255) 
     SliderFill.BorderSizePixel = 0
     SliderFill.Parent = SliderBackground
     
-    -- Add gradient to SliderFill
     local FillGradient = Instance.new("UIGradient")
     FillGradient.Color = ColorSequence.new({
         ColorSequenceKeypoint.new(0, Color3.fromRGB(148, 85, 255)),
@@ -786,7 +700,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     })
     FillGradient.Parent = SliderFill
     
-    -- Add Corner to SliderFill
     local FillCorner = Instance.new("UICorner")
     FillCorner.CornerRadius = UDim.new(1, 0)
     FillCorner.Parent = SliderFill
@@ -799,7 +712,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     SliderKnob.ZIndex = 2
     SliderKnob.Parent = SliderBackground
     
-    -- Add knob shadow
     local KnobShadow = Instance.new("ImageLabel")
     KnobShadow.Name = "Shadow"
     KnobShadow.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -814,7 +726,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     KnobShadow.SliceCenter = Rect.new(23, 23, 277, 277)
     KnobShadow.Parent = SliderKnob
     
-    -- Add Corner to SliderKnob
     local KnobCorner = Instance.new("UICorner")
     KnobCorner.CornerRadius = UDim.new(1, 0)
     KnobCorner.Parent = SliderKnob
@@ -830,7 +741,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
     ValueLabel.Parent = Slider
     
-    -- Update slider
     local function updateSlider(input)
         local sizeX = math.clamp((input.Position.X - SliderBackground.AbsolutePosition.X) / SliderBackground.AbsoluteSize.X, 0, 1)
         local newValue = math.floor(minValue + ((maxValue - minValue) * sizeX))
@@ -838,7 +748,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
         value = newValue
         ValueLabel.Text = tostring(value)
         
-        -- Update fill and knob position
         SliderFill.Size = UDim2.new(sizeX, 0, 1, 0)
         SliderKnob.Position = UDim2.new(sizeX, -7, 0.5, -7)
         
@@ -847,7 +756,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
         end
     end
     
-    -- Slider interactions
     SliderBackground.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
@@ -867,7 +775,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
         end
     end)
     
-    -- Hover effects
     Slider.MouseEnter:Connect(function()
         game:GetService("TweenService"):Create(Slider, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(45, 45, 60)}):Play()
         game:GetService("TweenService"):Create(SliderStroke, TweenInfo.new(0.2), {Color = Color3.fromRGB(70, 70, 90)}):Play()
@@ -883,7 +790,6 @@ function KarraHub:CreateSection(sectionName).CreateSlider(sliderText, minValue, 
     return Slider
 end
 
--- Initialize the Karra Hub
 local Library = KarraHub
 
 return Library
