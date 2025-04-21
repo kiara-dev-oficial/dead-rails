@@ -21,6 +21,8 @@ window:CreateToggle("true or false?", function(idk)
 end)
 ]]--
 local KarraHub = {}
+local pendingSections = {}
+
 
 local ScreenGui = Instance.new("ScreenGui")
 local LoadingFrame = Instance.new("Frame")
@@ -284,6 +286,12 @@ CloseButton.MouseLeave:Connect(function()
 end)
 
 function KarraHub:CreateSection(sectionName)
+    if not MainFrame.Visible then
+        table.insert(pendingSections, function()
+            KarraHub:CreateSection(sectionName)
+        end)
+        return {}
+    end
     local SectionContainer = Instance.new("Frame")
     local SectionTitle = Instance.new("TextLabel")
     local SectionContent = Instance.new("Frame")
@@ -604,6 +612,10 @@ function KarraHub:Init()
         
         LoadingFrame.Visible = false
         MainFrame.Visible = true
+for _, createFunc in ipairs(pendingSections) do
+    createFunc()
+end
+pendingSections = nil
 
 local isMobile = game:GetService("UserInputService").TouchEnabled and not game:GetService("UserInputService").KeyboardEnabled
 local RunService = game:GetService("RunService")
@@ -824,3 +836,4 @@ end
 local Library = KarraHub
 
 return Library
+
