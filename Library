@@ -309,6 +309,15 @@ function KarraHub:CreateSection(sectionName)
     TitleCorner.Parent = SectionTitle
     
     SectionContent.Name = "Content"
+    -- Scroll Config
+    SectionContent.ClipsDescendants = true
+    SectionContent.Active = true
+    SectionContent.ScrollingDirection = Enum.ScrollingDirection.Y
+    SectionContent.ScrollBarThickness = 4
+    SectionContent.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 75)
+    SectionContent.ScrollBarImageTransparency = 0.3
+    SectionContent.AutomaticCanvasSize = Enum.AutomaticSize.Y
+
     SectionContent.Size = UDim2.new(1, 0, 1, -30)
     SectionContent.Position = UDim2.new(0, 0, 0, 30)
     SectionContent.BackgroundTransparency = 1
@@ -832,3 +841,4 @@ return Library
 
 
 
+--a
