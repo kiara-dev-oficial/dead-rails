@@ -544,29 +544,22 @@ function KarraHub:UpdateSectionCorners()
                     corner.CornerRadius = UDim.new(0, 8)
                 elseif i == 1 then
                     corner.CornerRadius = UDim.new(0, 8)
-                    local rightCoverFrame = Instance.new("Frame")
-                    rightCoverFrame.Name = "RightCover"
-                    rightCoverFrame.Size = UDim2.new(0, 8, 1, 0)
-                    rightCoverFrame.Position = UDim2.new(1, -8, 0, 0)
-                    rightCoverFrame.BackgroundColor3 = section.BackgroundColor3
-                    rightCoverFrame.BorderSizePixel = 0
-                    rightCoverFrame.ZIndex = 2
-                    rightCoverFrame.Parent = section
                 elseif i == sectionCount then
                     corner.CornerRadius = UDim.new(0, 8)
-                    local leftCoverFrame = Instance.new("Frame")
-                    leftCoverFrame.Name = "LeftCover"
-                    leftCoverFrame.Size = UDim2.new(0, 8, 1, 0)
-                    leftCoverFrame.Position = UDim2.new(0, 0, 0, 0)
-                    leftCoverFrame.BackgroundColor3 = section.BackgroundColor3
-                    leftCoverFrame.BorderSizePixel = 0
-                    leftCoverFrame.ZIndex = 2
-                    leftCoverFrame.Parent = section
                 else
                     corner.CornerRadius = UDim.new(0, 0)
                 end
             end
+            
+            if i > 1 then
+                section.Position = UDim2.new(0, 0, 0, 0)
+                section.Size = UDim2.new(0, 150, 1, 0) 
+            end
         end
+    end
+    
+    if UIListLayout then
+        UIListLayout.Padding = UDim.new(0, 0)
     end
 end
 
