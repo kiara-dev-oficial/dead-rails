@@ -832,8 +832,8 @@ return Library
         MainFrame.Visible = not MainFrame.Visible
     end)
 
-    game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
-        if gpe then return end
+    game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed then return end
         if input.KeyCode == Enum.KeyCode.K then
             MainFrame.Visible = not MainFrame.Visible
         end
