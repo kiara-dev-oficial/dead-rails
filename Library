@@ -200,7 +200,7 @@ Containers.Parent = MainFrame
 UIListLayout.Parent = Containers
 UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0, 1)
+UIListLayout.Padding = UDim.new(0, 0)
 
 local function MakeDraggable(frame)
     local dragToggle, dragInput, dragStart, startPos
@@ -292,7 +292,7 @@ function KarraHub:CreateSection(sectionName)
     SectionTitle.BorderSizePixel = 0
     SectionTitle.Font = Enum.Font.GothamSemibold
     SectionTitle.Text = sectionName
-    SectionTitle.TextColor3 = Color3.fromRGB(200, 200, 210)
+    SectionTitle.TextColor3 = Color3.fromRGB(200, 150, 255)
     SectionTitle.TextSize = 14
     SectionTitle.Parent = SectionContainer
     
@@ -312,6 +312,15 @@ function KarraHub:CreateSection(sectionName)
     SectionContent.Size = UDim2.new(1, 0, 1, -30)
     SectionContent.Position = UDim2.new(0, 0, 0, 30)
     SectionContent.BackgroundTransparency = 1
+    SectionContent.ClipsDescendants = true
+    SectionContent.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    SectionContent.CanvasSize = UDim2.new(0, 0, 0, 0)
+    SectionContent.ScrollBarThickness = 4
+    SectionContent.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 75)
+    SectionContent.ScrollBarImageTransparency = 0.3
+    SectionContent.ScrollingDirection = Enum.ScrollingDirection.Y
+    SectionContent.Active = true
+
     SectionContent.Parent = SectionContainer
     
     UIListLayout.Parent = SectionContent
@@ -626,7 +635,37 @@ function KarraHub:Init()
         }):Play()
         
         self:UpdateSectionCorners()
+    
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Name = "ToggleUI"
+    toggleButton.Size = UDim2.new(0, 40, 0, 40)
+    toggleButton.Position = UDim2.new(0, 10, 1, -50)
+    toggleButton.AnchorPoint = Vector2.new(0, 1)
+    toggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
+    toggleButton.Text = "K"
+    toggleButton.TextSize = 20
+    toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    toggleButton.Font = Enum.Font.GothamBold
+    toggleButton.AutoButtonColor = true
+    toggleButton.ZIndex = 5
+    toggleButton.Parent = ScreenGui
+
+    local uicorner = Instance.new("UICorner")
+    uicorner.CornerRadius = UDim.new(1, 0)
+    uicorner.Parent = toggleButton
+
+    toggleButton.MouseButton1Click:Connect(function()
+        MainFrame.Visible = not MainFrame.Visible
     end)
+
+    game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
+        if gpe then return end
+        if input.KeyCode == Enum.KeyCode.K then
+            MainFrame.Visible = not MainFrame.Visible
+        end
+    end)
+    
+end)
     
     return self
 end
