@@ -264,7 +264,7 @@ end)
 function KarraHub:CreateSection(sectionName)
     local SectionContainer = Instance.new("Frame")
     local SectionTitle = Instance.new("TextLabel")
-    local SectionContent = Instance.new("Frame")
+    local SectionContent = Instance.new("ScrollingFrame")
     local UIListLayout = Instance.new("UIListLayout")
     local UIPadding = Instance.new("UIPadding")
     
@@ -320,7 +320,6 @@ function KarraHub:CreateSection(sectionName)
     SectionContent.ScrollBarImageTransparency = 0.3
     SectionContent.ScrollingDirection = Enum.ScrollingDirection.Y
     SectionContent.Active = true
-
     SectionContent.Parent = SectionContainer
     
     UIListLayout.Parent = SectionContent
@@ -635,37 +634,7 @@ function KarraHub:Init()
         }):Play()
         
         self:UpdateSectionCorners()
-    
-    local toggleButton = Instance.new("TextButton")
-    toggleButton.Name = "ToggleUI"
-    toggleButton.Size = UDim2.new(0, 40, 0, 40)
-    toggleButton.Position = UDim2.new(0, 10, 1, -50)
-    toggleButton.AnchorPoint = Vector2.new(0, 1)
-    toggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
-    toggleButton.Text = "K"
-    toggleButton.TextSize = 20
-    toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    toggleButton.Font = Enum.Font.GothamBold
-    toggleButton.AutoButtonColor = true
-    toggleButton.ZIndex = 5
-    toggleButton.Parent = ScreenGui
-
-    local uicorner = Instance.new("UICorner")
-    uicorner.CornerRadius = UDim.new(1, 0)
-    uicorner.Parent = toggleButton
-
-    toggleButton.MouseButton1Click:Connect(function()
-        MainFrame.Visible = not MainFrame.Visible
     end)
-
-    game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
-        if gpe then return end
-        if input.KeyCode == Enum.KeyCode.K then
-            MainFrame.Visible = not MainFrame.Visible
-        end
-    end)
-    
-end)
     
     return self
 end
@@ -832,3 +801,34 @@ end
 local Library = KarraHub
 
 return Library
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Name = "ToggleUI"
+    toggleButton.Size = UDim2.new(0, 40, 0, 40)
+    toggleButton.Position = UDim2.new(0, 10, 1, -50)
+    toggleButton.AnchorPoint = Vector2.new(0, 1)
+    toggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    toggleButton.Text = "K"
+    toggleButton.TextSize = 20
+    toggleButton.TextColor3 = Color3.fromRGB(148, 85, 255)
+    toggleButton.Font = Enum.Font.GothamBold
+    toggleButton.AutoButtonColor = true
+    toggleButton.ZIndex = 5
+    toggleButton.Parent = ScreenGui
+
+    local uicorner = Instance.new("UICorner")
+    uicorner.CornerRadius = UDim.new(1, 0)
+    uicorner.Parent = toggleButton
+
+    toggleButton.MouseButton1Click:Connect(function()
+        MainFrame.Visible = not MainFrame.Visible
+    end)
+
+    game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
+        if gpe then return end
+        if input.KeyCode == Enum.KeyCode.K then
+            MainFrame.Visible = not MainFrame.Visible
+        end
+    end)
+
+
+
