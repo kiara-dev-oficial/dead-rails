@@ -645,6 +645,33 @@ function KarraHub:Init()
         self:UpdateSectionCorners()
     end)
     
+    
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Name = "ToggleUI"
+    toggleButton.Size = UDim2.new(0, 40, 0, 40)
+    toggleButton.Position = UDim2.new(0, 10, 1, -50)
+    toggleButton.AnchorPoint = Vector2.new(0, 1)
+    toggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    toggleButton.Text = "K"
+    toggleButton.TextSize = 20
+    toggleButton.TextColor3 = Color3.fromRGB(148, 85, 255)
+    toggleButton.Font = Enum.Font.GothamBold
+    toggleButton.AutoButtonColor = true
+    toggleButton.ZIndex = 5
+    toggleButton.Parent = ScreenGui
+    local uicorner = Instance.new("UICorner")
+    uicorner.CornerRadius = UDim.new(1, 0)
+    uicorner.Parent = toggleButton
+    toggleButton.MouseButton1Click:Connect(function()
+        MainFrame.Visible = not MainFrame.Visible
+    end)
+    game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
+        if processed then return end
+        if input.KeyCode == Enum.KeyCode.K then
+            MainFrame.Visible = not MainFrame.Visible
+        end
+    end)
+
     return self
 end
 
@@ -810,35 +837,3 @@ end
 local Library = KarraHub
 
 return Library
-    local toggleButton = Instance.new("TextButton")
-    toggleButton.Name = "ToggleUI"
-    toggleButton.Size = UDim2.new(0, 40, 0, 40)
-    toggleButton.Position = UDim2.new(0, 10, 1, -50)
-    toggleButton.AnchorPoint = Vector2.new(0, 1)
-    toggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    toggleButton.Text = "K"
-    toggleButton.TextSize = 20
-    toggleButton.TextColor3 = Color3.fromRGB(148, 85, 255)
-    toggleButton.Font = Enum.Font.GothamBold
-    toggleButton.AutoButtonColor = true
-    toggleButton.ZIndex = 5
-    toggleButton.Parent = ScreenGui
-
-    local uicorner = Instance.new("UICorner")
-    uicorner.CornerRadius = UDim.new(1, 0)
-    uicorner.Parent = toggleButton
-
-    toggleButton.MouseButton1Click:Connect(function()
-        MainFrame.Visible = not MainFrame.Visible
-    end)
-
-    game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-        if gameProcessed then return end
-        if input.KeyCode == Enum.KeyCode.K then
-            MainFrame.Visible = not MainFrame.Visible
-        end
-    end)
-
-
-
---a
