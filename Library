@@ -1,28 +1,4 @@
---[[
-How to use?
-ex code:
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/kiara-dev-oficial/dead-rails/main/Library"))()
-local window = library:CreateWindow("Hi!")
-
-window:CreateButton("Print!", function()
-  print("1234")
-end)
-enabled = false
-window:CreateToggle("true or false?", function(idk)
-  if idk then
-    enabled = true
-      spawn(function()
-        print(enabled)
-      end)
-    else
-      enabled = false
-      print(enabled)
-    end
-end)
-]]--
 local KarraHub = {}
-local pendingSections = {}
-
 
 local ScreenGui = Instance.new("ScreenGui")
 local LoadingFrame = Instance.new("Frame")
@@ -286,12 +262,6 @@ CloseButton.MouseLeave:Connect(function()
 end)
 
 function KarraHub:CreateSection(sectionName)
-    if not MainFrame.Visible then
-        table.insert(pendingSections, function()
-            KarraHub:CreateSection(sectionName)
-        end)
-        return {}
-    end
     local SectionContainer = Instance.new("Frame")
     local SectionTitle = Instance.new("TextLabel")
     local SectionContent = Instance.new("Frame")
@@ -612,17 +582,6 @@ function KarraHub:Init()
         
         LoadingFrame.Visible = false
         MainFrame.Visible = true
-for _, createFunc in ipairs(pendingSections) do
-    createFunc()
-end
-pendingSections = nil
-
-local isMobile = game:GetService("UserInputService").TouchEnabled and not game:GetService("UserInputService").KeyboardEnabled
-local RunService = game:GetService("RunService")
-RunService.RenderStepped:Connect(function()
-    MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2)
-end)
-
         
         MainFrame.BackgroundTransparency = 1
         MainShadow.ImageTransparency = 1
@@ -634,13 +593,11 @@ end)
         MainFrame.Size = UDim2.new(0, 430, 0, 280)
         MainFrame.Position = UDim2.new(0.5, -215, 0.5, -140)
         
-        local targetSize = isMobile and UDim2.new(0, 350, 0, 240) or UDim2.new(0, 450, 0, 300)
-local targetPos = isMobile and UDim2.new(0.5, -175, 0.5, -120) or UDim2.new(0.5, -225, 0.5, -150)
-tweenService:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-    BackgroundTransparency = 0,
-    Size = targetSize,
-    Position = targetPos
-}):Play()
+        tweenService:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+            BackgroundTransparency = 0,
+            Size = UDim2.new(0, 450, 0, 300),
+            Position = UDim2.new(0.5, -225, 0.5, -150)
+        }):Play()
         
         tweenService:Create(MainShadow, TweenInfo.new(0.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
             ImageTransparency = 0
@@ -836,4 +793,3 @@ end
 local Library = KarraHub
 
 return Library
-
